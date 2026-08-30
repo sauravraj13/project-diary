@@ -5,6 +5,7 @@
  */
 // Mystic Diary — Created by Saurav Raj
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 import diaryTexture from "./assets/diary-textures.png";
@@ -387,8 +388,8 @@ function App() {
                     </div>
                   </div>
 
-                  <AnimatePresence>
-                    {isFocused && (
+                  {isFocused && createPortal(
+                    <AnimatePresence>
                       <motion.div className="focused-page-scene" initial={{ opacity: 0, scale: .9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: .94 }} transition={{ duration: .75, ease: [0.22, 1, 0.36, 1] }}>
                         <div className="focused-page-wrapper">
                           <img src={focusedQuestionPage} className="focused-page-image" alt="Focused diary page" />
@@ -402,8 +403,9 @@ function App() {
                           </div>
                         </div>
                       </motion.div>
-                    )}
-                  </AnimatePresence>
+                    </AnimatePresence>,
+                    document.body
+                  )}
 
                   <motion.button
                     type="button"
