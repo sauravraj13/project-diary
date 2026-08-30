@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir *)",
+      "Bash(rtk ls *)",
+      "Bash(rtk read *)",
+      "Bash(node server.js)",
+      "Bash(rtk npm *)",
+      "Bash(curl -s http://localhost:5000/api/diary -X POST -H \"Content-Type: application/json\" -d '{\"question\": \"test\"}')",
+      "Bash(netstat -ano)",
+      "Bash(findstr :5173)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(rtk grep *)",
+      "Bash(timeout 10 bash -c \"until curl -s http://localhost:5173 > /dev/null; do sleep 1; done; echo 'Server is ready'\")",
+      "Bash(taskkill /f /im node.exe)",
+      "Bash(timeout 15 bash -c \"until curl -s http://localhost:5173 > /dev/null; do sleep 1; done; echo 'Mystic Diary development server is running at http://localhost:5173'\")",
+      "Bash(rtk curl *)",
+      "Bash(curl -s http://localhost:5173/src/App.jsx?t=1788023638585)",
+      "Bash(curl -s http://localhost:5173/src/App.css?t=1788023638585)",
+      "Bash(rtk git *)",
+      "Bash(timeout 15 bash -c \"until curl -s http://localhost:5173 > /dev/null; do sleep 1; done; echo 'Server is ready'; curl -s http://localhost:5173/src/App.jsx?t=1788023638585 | grep -o 'Error:'\")",
+      "Bash(timeout 20 bash -c \"until curl -s http://localhost:5173 > /dev/null; do sleep 1; done; echo 'Server is ready'\")",
+      "Bash(rtk lint *)",
+      "Bash(npx eslint *)",
+      "Bash(kill %b05s0bqm1)",
+      "Bash(kill %+)",
+      "Bash(npm start *)",
+      "Bash(timeout 5 bash -c \"while true; do sleep 1; done\")",
+      "Bash(rtk proxy *)"
+    ]
+  }
+}

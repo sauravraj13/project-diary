@@ -1,0 +1,11 @@
+{
+  "author": "Saurav Raj",
+  "scripts": {
+    "dev": "npm --prefix mystic-diary run dev",
+    "build": "npm --prefix mystic-diary run build",
+    "lint": "npm --prefix mystic-diary run lint"
+  },
+  "dependencies": {
+    "framer-motion": "^13.1.0"
+  }
+}
