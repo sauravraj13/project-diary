@@ -18,6 +18,7 @@ import MagicalAtmosphere from "./components/MagicalAtmosphere.jsx";
 import "./App.css";
 
 const ABSORB_MS = 1200;
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 const busyPhases = new Set(["absorbing", "consulting"]);
 
@@ -77,7 +78,7 @@ function App() {
         setPhase("consulting");
 
         try {
-          const response = await fetch("/api/diary", {
+          const response = await fetch(`${API_URL}/api/diary`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

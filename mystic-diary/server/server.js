@@ -11,9 +11,15 @@ import { GoogleGenAI } from "@google/genai";
 dotenv.config();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", process.env.FRONTEND_URL].filter(Boolean),
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 app.use(express.json());
 
 const apiKey = process.env.GEMINI_API_KEY;
@@ -140,6 +146,10 @@ app.get("/api/test", (req, res) => {
   });
 });
 
+app.get("/", (req, res) => {
+  res.json({ message: "Mystic Diary API is running." });
+});
+
 app.post("/api/diary", async (req, res) => {
   try {
     if (!apiKey || !ai) {
@@ -214,8 +224,6 @@ app.post("/api/diary", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(
-    `Mystic Diary server running on http://localhost:${PORT}`
-  );
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Mystic Diary server running on port ${PORT}`);
 });
